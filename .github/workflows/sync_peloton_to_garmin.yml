@@ -15,6 +15,9 @@ on:
   schedule:
     - cron: '0 1,12,18 * * *'
 
+env:
+  OUTPUT_DIR: /app/output
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -45,7 +48,11 @@ jobs:
             "Tcx": false,
             "SaveLocalCopy": ${{ github.event.inputs.saveLocalCopy || false }},
             "IncludeTimeInHRZones": false,
-            "IncludeTimeInPowerZones": false
+            "IncludeTimeInPowerZones": false,
+            "StackedWorkouts": {
+              "AutomaticallyStackWorkouts": true,
+              "MaxAllowedGapSeconds": 600
+            }
           },
           "Peloton": {
             "NumWorkoutsToDownload": ${{ github.event.inputs.workoutsToDownload || env.DEFAULT_WORKOUT_NUM }},
