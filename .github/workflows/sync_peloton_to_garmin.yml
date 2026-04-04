@@ -17,6 +17,7 @@ on:
 
 env:
   OUTPUT_DIR: /app/output
+  P2G_GARMIN__COOKIE: ${{ secrets.P2G_GARMIN__COOKIE }}
 
 jobs:
   sync:
